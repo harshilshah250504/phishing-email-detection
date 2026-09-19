@@ -1,0 +1,22 @@
+# Multilingual Phishing Detection
+
+English and Hindi email-classification experiments using engineered features, XGBoost, SMOTE, and SHAP.
+
+## Status and prerequisites
+
+The original datasets are required: Cleaned_English_Dataset.xlsx and hindi_emails_merged.xlsx (some experiments reference a CSV variant). They are not included. Update the /content/ paths to your dataset location. WHOIS domain checks may need internet access. Contains multiple experimental pipelines and repeated function definitions; inspect cells before running. Model performance has not been independently reproduced.
+
+Saved outputs and notebook session metadata have been removed. Dependencies are inferred from imports; a fully reproduced environment and pinned versions are pending.
+
+## Setup
+
+```sh
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+jupyter lab notebooks/phishing-email-detection.ipynb
+```
+
+## Author
+
+Harshil Prashant Shah · [Portfolio](https://harshil-prashant-shah.vercel.app/) · [LinkedIn](https://www.linkedin.com/in/harshilpshah/)

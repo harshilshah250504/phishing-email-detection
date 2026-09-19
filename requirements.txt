@@ -1,0 +1,12 @@
+numpy
+pandas
+openpyxl
+scikit-learn
+imbalanced-learn
+xgboost
+shap
+matplotlib
+textblob
+python-whois
+python-dateutil
+jupyterlab
