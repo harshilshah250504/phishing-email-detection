@@ -1,34 +1,74 @@
-# Multilingual Phishing Detection
+![Multilingual Phishing Detection](assets/header.svg)
 
-English and Hindi email-classification experiments using engineered features, XGBoost, SMOTE, and SHAP.
+<div align="center">
 
-## Status and prerequisites
+**Interpretable email analysis in English and Hindi.**
 
-The original datasets are required: Cleaned_English_Dataset.xlsx and hindi_emails_merged.xlsx (some experiments reference a CSV variant). They are not included. Update the /content/ paths to your dataset location. WHOIS domain checks may need internet access. Contains multiple experimental pipelines and repeated function definitions; inspect cells before running. Model performance has not been independently reproduced.
+Python · XGBoost · SHAP · SMOTE · pandas
 
-Saved outputs and notebook session metadata have been removed. Dependencies are inferred from imports; a fully reproduced environment and pinned versions are pending.
+[Portfolio](https://harshil-prashant-shah.vercel.app/) · [LinkedIn](https://www.linkedin.com/in/harshilpshah/) · [Explore the code](#repository-guide)
 
-## Setup
+</div>
 
-```sh
+---
+
+## What this project explores
+
+An interpretable approach to suspicious-email classification across English and Hindi, combining engineered email features with tree-based models and feature explanations.
+
+### Core components
+
+- Features derived from senders, domains, timestamps, keywords, text lengths, links, and sentiment.
+- Separate language-specific and merged-model experiments.
+- SMOTE-based class balancing in experimental training workflows.
+- SHAP explanations and heuristic suspicion categories.
+
+## Workflow
+
+```mermaid
+flowchart LR
+    A[Local email datasets] --> B[Feature preparation]
+    B --> C[Language-specific experiments]
+    B --> D[Merged experiment]
+    C --> E[XGBoost predictions]
+    D --> E
+    E --> F[SHAP explanations]
+```
+
+## Run locally
+
+```bash
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 jupyter lab notebooks/phishing-email-detection.ipynb
 ```
 
-## Author
+On Windows, activate with `.venv\Scripts\activate`. Add the authorized local datasets following [DATA_SETUP.md](DATA_SETUP.md) before running the notebook. `PROJECT_DATA_DIR` can point to a separate directory. Some legacy WHOIS experiments require network access.
 
-Harshil Prashant Shah · [Portfolio](https://harshil-prashant-shah.vercel.app/) · [LinkedIn](https://www.linkedin.com/in/harshilpshah/)
+## Repository guide
 
-## Local dataset configuration
+- `notebooks/phishing-email-detection.ipynb` — research notebook with local-path configuration.
+- `DATA_SETUP.md` — expected files and directory layout.
+- `VALIDATION.md` — dataset checks and evaluation limitations.
+- `requirements.txt` — dependencies inferred from imports.
 
-See [DATA_SETUP.md](DATA_SETUP.md). Required datasets have been located in the author’s local materials and remain excluded from GitHub. The notebook now uses `PROJECT_DATA_DIR` or the local `data/` directory instead of fixed Colab paths. Full pipeline validation is still in progress.
+## What has been checked
 
-## Research reference
+The supplied English dataset has **38,668 records**; the Hindi dataset has **20,000 records**. Required columns were checked locally. Missing English bodies and repeated content in both datasets are documented in [VALIDATION.md](VALIDATION.md).
 
-[Paper on IEEE Xplore](https://ieeexplore.ieee.org/document/11566454) — project reference supplied by the author. Publisher or Drive access conditions may apply.
+A full held-out model evaluation is not yet established. Equivalent email bodies must stay within the same split to avoid leakage. Spam/ham labels require careful interpretation before being treated as phishing ground truth. SHAP explains model output; it does not verify that an email is safe.
 
-## Dataset review
+## Research
 
-See [VALIDATION.md](VALIDATION.md) for locally checked row counts, missing values, duplicate content, and evaluation limitations.
+[Read the associated paper or manuscript](https://ieeexplore.ieee.org/document/11566454). This reference was supplied by the author; publisher or Drive access conditions may apply. The paper and this repository may represent different project stages.
+
+## About the author
+
+**Harshil Prashant Shah** · MS in Management Information Systems, Texas A&M University.
+
+[Portfolio](https://harshil-prashant-shah.vercel.app/) · [LinkedIn](https://www.linkedin.com/in/harshilpshah/) · [GitHub](https://github.com/harshilshah250504)
+
+## Data and reuse
+
+Local datasets, credentials, and third-party research PDFs are not included. No blanket license is granted over third-party material. Refer to the original sources for their terms before redistributing data or publications.
